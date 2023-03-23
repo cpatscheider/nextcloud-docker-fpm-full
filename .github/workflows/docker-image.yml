@@ -23,7 +23,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4.0.0
         with:
-          context: ./Dockerfile
+          context: ./
           push: true
           tags: cpatscheider/nextcloud:latest
           platforms: linux/amd64,linux/arm64
