@@ -23,11 +23,12 @@ jobs:
       - name: pull image
         run: docker pull nextcloud:fpm
       - name: get version
+        id: version
         run: VERSION=$(docker inspect image $(docker image ls | grep "nextcloud           fpm" | cut -c 39-51) 2>/dev/null | grep -m1 -oP '(?<="NEXTCLOUD_VERSION=)[^"]+')
       - name: Build and push
         uses: docker/build-push-action@v4.0.0
         with:
           context: ./
           push: true
-          tags: cpatscheider/nextcloud:latest, cpatscheider/nextcloud:${VERSION}
+          tags: cpatscheider/nextcloud:latest, cpatscheider/nextcloud: [${{steps.version.outputs.VERSION}}]
           platforms: linux/amd64,linux/arm64
