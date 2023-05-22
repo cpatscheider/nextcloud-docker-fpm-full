@@ -23,7 +23,7 @@ jobs:
       - name: pull image
         run: docker pull nextcloud:fpm
       - name: get version
-        run: docker image ls | grep "nextcloud           fpm"
+        run: docker inspect image $(docker image ls | grep "nextcloud           fpm" | cut -c 39-51)
       - name: Build and push
         uses: docker/build-push-action@v4.0.0
         with:
