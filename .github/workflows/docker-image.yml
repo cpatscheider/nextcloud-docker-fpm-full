@@ -38,7 +38,7 @@ jobs:
           push: true
           tags: |
              cpatscheider/nextcloud:latest 
-             nextcloud:fpm
+             cpatscheider/nextcloud:fpm
              cpatscheider/nextcloud:${{steps.version.outputs.VERSION}}
              cloud.canister.io:5000/cpatscheider/nextcloud:latest 
              cloud.canister.io:5000/cpatscheider/nextcloud:fpm
